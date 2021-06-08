@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"net"
 	"os"
@@ -29,7 +28,7 @@ func (s *stunLogger) WriteTo(p []byte, addr net.Addr) (n int, err error) {
 			return
 		}
 
-		fmt.Printf("Outbound STUN: %s \n", msg.String())
+		log.Printf("Outbound STUN: %s \n", msg.String())
 	}
 
 	return
@@ -42,7 +41,7 @@ func (s *stunLogger) ReadFrom(p []byte) (n int, addr net.Addr, err error) {
 			return
 		}
 
-		fmt.Printf("Inbound STUN: %s \n", msg.String())
+		log.Printf("Inbound STUN: %s \n", msg.String())
 	}
 
 	return
