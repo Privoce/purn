@@ -13,6 +13,7 @@ import (
 
 	"github.com/pion/stun"
 	"github.com/pion/turn/v2"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 // stunLogger wraps a PacketConn and prints incoming/outgoing STUN packets
@@ -53,6 +54,14 @@ func main() {
 	users := flag.String("users", "", "List of username and password (e.g. \"user=pass,user=pass\")")
 	realm := flag.String("realm", "pion.ly", "Realm (defaults to \"pion.ly\")")
 	flag.Parse()
+
+	log.SetOutput(&lumberjack.Logger{
+		Filename:   "purn.log",
+		MaxSize:    500, // megabytes
+		MaxBackups: 3,
+		MaxAge:     3,    //days
+		Compress:   true, // disabled by default
+	})
 
 	if len(*publicIP) == 0 {
 		log.Fatalf("'public-ip' is required")
