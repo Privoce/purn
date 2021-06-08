@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ PIONS_LOG_TRACE=all ./purn -public-ip your_server_ip -users user=password -port your_port
