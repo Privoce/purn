@@ -62,6 +62,8 @@ func main() {
 		Compress:   true, // disabled by default
 	})
 
+	log.Println("purn started......")
+
 	if len(*publicIP) == 0 {
 		log.Fatalf("'public-ip' is required")
 	} else if len(*users) == 0 {
